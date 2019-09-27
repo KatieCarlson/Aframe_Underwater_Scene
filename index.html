@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Katie's Underwater Scene</title>
+    <meta name="description" content="Created with AFrame">
+    <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.0.1/dist/aframe-extras.min.js"></script>
+    <script src="https://unpkg.com/aframe-particle-system-component@1.0.x/dist/aframe-particle-system-component.min.js"></script>
+    
+    <!--SOURCES
+    3D Coral Models: Sketchfab Artist Lauren Olinger    
+    3D Coral Models: Sketchfab Artist Ben M. Ritt 
+    -->
+  </head>
+  <body>
+    <a-scene>
+      
+      <a-entity id="rig"
+        movement-controls="fly: true; speed: 0.5">
+        <a-entity camera
+            position="0 1.6 0"
+            look-controls>
+        </a-entity>
+      </a-entity>
+      
+      <a-assets>
+        
+        <!-- Texture Sources -->
+        <img id="skyTexture" src="blue.jpg">
+        <img id="sandTexture" src="sand.jpg">
+        <a-video id="surfaceTexture" src="surface.mp4" width="16" height="9" rotation="90 0 0"></a-video>
+        
+      </a-assets>
+      
+      <a-sound src="underwater.mp3" autoplay="true" loop="true" volume="10"></a-sound>
+      
+      <!-- Particle Emitter -->
+      <a-entity position="-30 -30 10" particle-system="preset: dust; color: #0305ab,#00a7be,; particleCount: 2000; maxAge: 30"></a-entity>
+      
+      <!-- Coral Reef Models -->
+      <a-gltf-model src="coral1/scene.gltf" position="-25 49 15" scale="20 20 20" rotation="0 0 0"></a-gltf-model>
+      <a-gltf-model src="coral2/scene.gltf" position="-3 -10 -12" scale="35 35 35" rotation="0 45 0"></a-gltf-model>
+      <a-gltf-model src="coral3/scene.gltf" position="1 -9 -25" scale="10 10 10" rotation="0 70 0"></a-gltf-model>
+      <a-gltf-model src="coral4/scene.gltf" position="-19 -18.9w -25" scale="15 15 15" rotation="0 70 0"></a-gltf-model>
+      <a-gltf-model src="coral5/scene.gltf" position="-21 -17 -26" scale="15 15 15" rotation="-45 60 0"></a-gltf-model>
+      <a-gltf-model src="coral2/scene.gltf" position="-1 -24 -40" scale="35 35 35" rotation="0 -90 -20"></a-gltf-model>
+      
+      <!-- Oceanic Surface --> 
+      <a-video src="surface.mp4" width="96" height="54" position="0 15 27" rotation="270 0 0" opacity="1"></a-video>
+      <a-video src="surface.mp4" width="96" height="54" position="0 15 -27" rotation="90 0 0" opacity="1"></a-video>
+      
+      <!-- Sea Floor -->
+      <a-gltf-model src="seafloor/scene.gltf" position="0 -20 0" scale="10 10 10"></a-gltf-model>
+      <a-plane width="300" height="230" rotation="-91 0 0" position="0 -22 0" opacity="0.6" src="seafloor2.jpg"></a-plane>
+
+      <!-- Moving Lights -->
+      <a-light animation="property: position; 
+                          from: -10 10 -80; 
+                          to: -100 100 100; 
+                          dur: 2000;
+                          loop: true;
+                          dir: alternate" 
+               type="point" intensity="0.45" position="1 10 20" color="#7194ab"></a-light>
+      <a-light animation="property: position; 
+                          from: -20 5 20; 
+                          to: 90 100 -100; 
+                          dur: 2100;
+                          loop: true;
+                          dir: alternate" 
+               type="point" intensity="0.45" position="1 10 20" color="#7194ab"></a-light>
+      <a-light animation="property: position; 
+                          from: -90 100 -160; 
+                          to: 80 10 80; 
+                          dur: 2200;
+                          loop: true;
+                          dir: alternate" 
+               type="point" intensity="0.45" position="1 10 20" color="#7194ab"></a-light>
+      <a-light animation="property: position; 
+                          from: -80 100 180; 
+                          to: 0 30 -50; 
+                          dur: 2300;
+                          loop: true;
+                          dir: alternate" 
+               type="point" intensity="0.45" position="1 10 20" color="#7194ab"></a-light>
+      <a-light animation="property: position; 
+                          from: 90 100 150; 
+                          to: 30 10 -50; 
+                          dur: 2400;
+                          loop: true;
+                          dir: alternate" 
+               type="point" intensity="0.45" position="1 10 20" color="#7194ab"></a-light>
+      <a-light animation="property: position; 
+                          from: -80 10 0; 
+                          to: 80 100 120; 
+                          dur: 2500;
+                          loop: true;
+                          dir: alternate" 
+               type="point" intensity="0.45" position="1 10 20" color="#7194ab"></a-light>
+      <a-light animation="property: position; 
+                          from: -30 10 90; 
+                          to: 10 100 100; 
+                          dur: 2600;
+                          loop: true;
+                          dir: alternate" 
+               type="point" intensity="0.45" position="1 10 20" color="#7194ab"></a-light>
+      
+      <a-sphere position="10 -5 -15" radius="1.5" src="scales.jpg"></a-sphere>
+      <!-- Eyes -->
+      <a-sphere position="8.8 -4.5 -14.5" radius="0.2" color="#000000"></a-sphere>
+      <a-sphere position="8.8 -4.5 -15.5" radius="0.2" color="#000000"></a-sphere>
+      <!-- Fins -->
+      <a-triangle vertex-a="9.5 -3 -15" vertex-b="11 -3 -15" vertex-c="9.5 -5 -15" side="double" color="#ffa63f"></a-triangle>
+      <a-triangle vertex-a="13 -6 -15" vertex-b="13 -4 -15" vertex-c="10 -5 -15" side="double" color="#ffa63f"></a-triangle>
+      
+      <a-sky src="#skyTexture"></a-sky>
+  
+    </a-scene>
+  </body>
+</html>
